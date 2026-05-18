@@ -32,3 +32,8 @@ Thumbs.db
 .env
 .env.local
 .env.*.local
+
+# documentação
+doc/
+doc/main.tex
+doc/VOID-COSMIC_VPS.pdf
