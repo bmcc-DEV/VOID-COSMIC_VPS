@@ -22,6 +22,8 @@ import {
   type NostrEvent,
 } from "nostr-tools";
 
+export type { NostrEvent, Filter } from "nostr-tools";
+
 // ─── Constantes ───────────────────────────────────────────────────────────────
 
 export const ETERNET_KINDS = {
@@ -34,6 +36,11 @@ export const ETERNET_KINDS = {
   PREKEY_BUNDLE:    31220,
   VOID_TASK:        31222,
   VOID_TASK_RESULT: 31223,
+  // Marketplace
+  ASSET_RELEASE:       31224,
+  ASSET_REVIEW:        31225,
+  ASSET_UPDATE:        31226,
+  MARKETPLACE_LISTING: 31227,
 } as const;
 
 export type EternetKind = (typeof ETERNET_KINDS)[keyof typeof ETERNET_KINDS];
