@@ -1,0 +1,32 @@
+{
+  "name": "@eternet/core",
+  "version": "0.2.0",
+  "description": "ETΞRNET Protocol — crypto, rede, VOID-VPS (integrado com ET-RNET)",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc && npm run copy:wasm && node scripts/fix-dist-esm.mjs",
+    "copy:wasm": "mkdir -p dist/wasm && cp -r src/wasm/* dist/wasm/",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "example:pi": "node examples/pi-task.mjs",
+    "example:mapreduce": "node examples/pi-mapreduce.mjs",
+    "example:animus": "node examples/void-animus-worker.mjs",
+    "example:nostr": "node examples/nostr-pi-client.mjs"
+  },
+  "dependencies": {
+    "@noble/ciphers": "^2.2.0",
+    "@noble/curves": "^2.2.0",
+    "@noble/hashes": "^2.2.0",
+    "@noble/post-quantum": "^0.6.1",
+    "dexie": "^4.4.2",
+    "nostr-tools": "^2.23.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.17",
+    "typescript": "^5.9.3",
+    "vitest": "^3.1.0"
+  }
+}

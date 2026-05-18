@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2022", "DOM"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/*.test.ts",
+    "src/crypto/stratumProxy.mjs",
+    "src/crypto/doubleRatchet.void-vps.ts",
+    "src/core/useLua.ts",
+    "src/core/useVoid.ts",
+    "src/core/useVhgpuFarm.ts",
+    "src/utils/cn.ts",
+    "src/crypto/singularityHarvester.ts"
+  ]
+}

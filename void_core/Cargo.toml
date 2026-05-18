@@ -1,0 +1,37 @@
+[package]
+name = "void_core"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2"
+sha3 = "0.10"
+curve25519-dalek = { version = "4.0", features = ["rand_core"] }
+rand_core = { version = "0.6", features = ["getrandom"] }
+getrandom = { version = "0.2", features = ["js"] }
+getrandom_04 = { package = "getrandom", version = "0.4", features = ["wasm_js"] }
+js-sys = "0.3"
+hex = "0.4"
+console_error_panic_hook = "0.1"
+bulletproofs = "4.0.0"
+merlin = "3.0.0"
+curve25519-dalek-ng = "4"
+blake3 = "1.5.0"
+
+# VØID-LN: BOLT11 invoice parsing/generation (só depende de bech32, WASM-friendly)
+lightning-invoice = { version = "0.33" }
+
+# QEL: ChaCha20-Poly1305 AEAD para cifragem de shards
+chacha20poly1305 = { version = "0.10", features = ["heapless"] }
+
+# PQC: ML-KEM-1024 (NIST FIPS 203) + ML-DSA-87 (NIST FIPS 204)
+ml-kem = { version = "0.3.2", features = ["getrandom"] }
+ml-dsa = { version = "0.1.0", features = ["getrandom"] }
+hybrid-array = "0.4"
+
+# Anti-Sybil: SHA3 para PoW hashcash
+num-bigint = { version = "0.4", features = ["rand"] }
+num-traits = "0.2"

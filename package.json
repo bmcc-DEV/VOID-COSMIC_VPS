@@ -1,0 +1,12 @@
+{
+  "name": "void-cosmic-vps",
+  "private": true,
+  "description": "VOID-COSMIC monorepo — scripts delegados para eternet_ts",
+  "scripts": {
+    "build": "npm run build --prefix eternet_ts",
+    "example:pi": "npm run example:pi --prefix eternet_ts",
+    "example:mapreduce": "npm run example:mapreduce --prefix eternet_ts",
+    "example:animus": "npm run example:animus --prefix eternet_ts",
+    "example:nostr": "npm run example:nostr --prefix eternet_ts"
+  }
+}

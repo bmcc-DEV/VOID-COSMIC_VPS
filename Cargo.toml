@@ -1,0 +1,7 @@
+[workspace]
+resolver = "2"
+members = ["void_core", "void_runner", "workers/pi_worker"]
+
+[profile.release]
+opt-level = "s"
+lto = true
