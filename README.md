@@ -4,6 +4,8 @@ Implementação do **Capítulo 14** do protocolo VOID-COSMIC: executor WASM (ANI
 
 Especificação de referência: `doc/main.tex`, `doc/main.pdf` (47 páginas).
 
+> **Parte do ecossistema RetroLab.** O `@eternet/core` é consumido pelo [RE-trolab](https://github.com/bmcc-DEV/RE-trolab) como backend de criptografia, execução WASM remota e mensageria NOSTR.
+
 ---
 
 ## Visão geral
@@ -294,7 +296,55 @@ O path correcto é `~/Documentos/VOID-COSMIC_VPS/eternet_ts` (com underscore no 
 | EcoNet / IPFS distribuído | Stub in-memory |
 | GhostDocker completo, HiggsGit | Parcial / stub |
 | Testes vitest no monorepo | Pendente |
-| Integração app ET-RNET | Pendente |
+| Integração app ET-RNET | OK (via @eternet/core) |
+| Integração RE-trolab | OK (VoidVPS, ETRNet, GhostDocker, HiggsGit) |
+
+---
+
+## Ecossistema RetroLab
+
+VOID-COSMIC_VPS é o motor criptográfico e de execução WASM do ecossistema RetroLab:
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│  VOID-COSMIC_VPS│    │    ET-RNET       │    │   RE-trolab     │
+│  Rust + WASM    │    │  React PWA       │    │  Code Server    │
+│                 │    │                  │    │                 │
+│  Crypto engine  │◄──►│  Wallet + Network│◄──►│  IDE + Compiler │
+│  GhostID, QEL,  │    │  Lightning, NOSTR│    │  Emulators      │
+│  Bulletproofs   │    │  80+ modules     │    │  Marketplace    │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
+| Projeto | Repo | Função |
+|---------|------|--------|
+| **VOID-COSMIC_VPS** | [bmcc-DEV/VOID-COSMIC_VPS](https://github.com/bmcc-DEV/VOID-COSMIC_VPS) | Criptografia WASM + executor ANIMUS |
+| **ET-RNET** | [bmcc-DEV/ET-RNET](https://github.com/bmcc-DEV/ET-RNET) | PWA + Lightning + NOSTR mesh |
+| **RE-trolab** | [bmcc-DEV/RE-trolab](https://github.com/bmcc-DEV/RE-trolab) | IDE + Compiler + Emulators + Marketplace |
+
+O pacote `@eternet/core` (`eternet_ts/`) é consumido pelo RE-trolab como dependência local (vendored em `vendor/eternet-core/`).
+
+### Deploy completo
+
+```bash
+# 1. Build VOID-COSMIC_VPS
+bash scripts/build.sh
+
+# 2. Setup RE-trolab (usa @eternet/core)
+cd ~/Documentos/RE-trolab
+npm install && npm run build
+
+# 3. Subir stack completa
+docker compose up -d
+# Acessar: http://localhost:8080 (RetroLab)
+# Code Server: http://localhost:8443
+```
+
+---
+
+## Licença
+
+GPL-2.0
 
 ---
 
